@@ -1,0 +1,42 @@
+#main-layout {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  &.mobile {
+    mat-toolbar {
+      position: fixed;
+      z-index: 2;
+      width: 100%;
+
+      h1 {
+        margin-left: 8px;
+      }
+    }
+
+    mat-sidenav-container {
+      flex: 1 0 auto;
+      height: calc(100% - 56px);
+
+      mat-sidenav-content {
+        padding: 0;
+        height: 100%;
+      }
+    }
+  }
+
+  mat-sidenav-container {
+    height: calc(100% - 64px);
+
+    mat-sidenav {
+      width: 250px;
+    }
+
+    mat-sidenav-content {
+      padding: 24px;
+      height: calc(100% - 48px);
+    }
+  }
+}

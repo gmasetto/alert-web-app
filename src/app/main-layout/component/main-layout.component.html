@@ -1,0 +1,20 @@
+<div id="main-layout" [class.mobile]="isMobile">
+
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="onToggleSidenav()" *ngIf="config.sidenav">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>{{config.title}}</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container [style.marginTop.px]="isMobile ? 56 : 0" (backdropClick)="onToggleSidenav()" >
+    <mat-sidenav [opened]="opened && config.sidenav" [mode]="isMobile ? 'over' : 'side'" [fixedInViewport]="isMobile" fixedTopGap="56">
+      <mat-nav-list *ngFor="let item of config.sidenav">
+        <a mat-list-item [routerLink]="[item.path]" (click)="onCloseSidenavItem()">{{item.label}}</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
