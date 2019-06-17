@@ -8,11 +8,18 @@ import { HttpClient } from '@angular/common/http';
 export class AlertService {
 
   url = "http://localhost:8080/alertas";
+  urlTotalizers = "http://localhost:8080/alertas/totalizador";
 
   constructor(private _http: HttpClient) {
    }
   
-  getAlerts() {        
-    return this._http.get<AlertsMessage[]>(this.url);
+  getAlerts(page, size) {
+    let url = this.url + "?page=" + page + "&size=" + size;
+
+    return this._http.get<AlertsMessage[]>(url);
+  }
+
+  getAlertsTotalizers() {    
+    return this._http.get<Number>(this.urlTotalizers);
   }
 }
