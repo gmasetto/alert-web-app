@@ -1,0 +1,32 @@
+<mat-card class="card-txt">
+    <mat-label>Cadastro de alertas</mat-label>
+</mat-card>
+
+<mat-divider></mat-divider>
+
+<mat-card>
+
+  <div class="cad-container">
+        <mat-form-field>
+          <input matInput placeholder="Nome Alerta" [(ngModel)]="alert.alerta" >
+          <mat-hint align="start">Nome do alerta, ex: "Qual a situação do produto?" </mat-hint>
+        </mat-form-field>
+        
+        <mat-checkbox [(ngModel)]="alert.compararValor" >Comparar preço estipulado e participação</mat-checkbox>
+      
+        <mat-form-field>
+            <input matInput placeholder="Tipo Evento" [(ngModel)]="alert.evento.tipo">
+            <mat-hint align="start">ID do evento, por exemplo: 1</mat-hint>
+          </mat-form-field>
+      
+        <mat-form-field>
+              <input matInput placeholder="Descrição Evento" [(ngModel)]="alert.evento.descricao">
+              <mat-hint align="start">Ruptura detectada!</mat-hint>
+        </mat-form-field>
+
+        <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>    
+  </div>
+
+
+
+</mat-card>

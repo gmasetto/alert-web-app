@@ -7,9 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   config = {
-    title: 'Alert Web App',
+    title: 'Alertas',
     sidenav: [
-      { path: '/home', label: 'Home' }
+      { path: '/home', label: 'Principal' },
+      { path: '/alert', label: 'Criar Alerta' }
     ]
   };
 }

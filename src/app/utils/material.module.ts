@@ -13,6 +13,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule}  from '@angular/material/table';
 import { HttpClientModule } from '@angular/common/http';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatDividerModule} from '@angular/material/divider'; 
 
 const MATERIAL = [
   MatButtonModule,
@@ -29,6 +30,7 @@ const MATERIAL = [
   MatTableModule, 
   MatPaginatorModule,
   HttpClientModule,
+  MatDividerModule
 ];
 
 @NgModule({

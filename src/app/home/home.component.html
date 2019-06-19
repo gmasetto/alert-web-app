@@ -1,14 +1,16 @@
 
-<mat-toolbar-row color="second">        
+<mat-toolbar-row color="second"> 
+   <mat-form-field class="fill-space">   
+        <input matInput placeholder="Ponto de Venda" [(ngModel)]="pdv">
+        <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+   </mat-form-field>       
+
   <mat-form-field class="fill-space">
     <input matInput placeholder="Produto" [(ngModel)]="produto">
     <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
   </mat-form-field>
-  <mat-form-field class="fill-space">   
-    <input matInput placeholder="Ponto de Venda" [(ngModel)]="pdv">
-    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
-  </mat-form-field>
-  <button mat-flat-button color="primary" (click)="filter()">Filter</button>
+
+  <button mat-flat-button color="primary" (click)="filter()">Filtrar</button>
 </mat-toolbar-row>
 <div class="mat-elevation-z8">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">

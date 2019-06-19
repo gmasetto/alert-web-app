@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import { AlertsMessage } from './alert';
+import { AlertsMessage } from './alert-message';
 import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
-export class AlertService {
+export class AlertMessageService {
 
   url = "http://localhost:8080/alertas";
   urlTotalizers = "http://localhost:8080/alertas/totalizador";
@@ -18,16 +18,11 @@ export class AlertService {
 
     if (produto) {
         url = url + "&produto=" + produto;
-        console.log(url);
     } 
 
     if (pdv) {
         url = url + "&pdv=" + pdv;
-        console.log(url);
     }
-
-    console.log("&&&&&");
-    console.log(url);
 
     return this._http.get<AlertsMessage[]>(url);
   }

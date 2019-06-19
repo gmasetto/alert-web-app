@@ -8,11 +8,14 @@ import { MainLayoutModule } from './main-layout/main-layout.module';
 import { HomeComponent } from './home/home.component';
 import { MaterialModule } from './utils/material.module';
 import { FormsModule } from '@angular/forms';
+import { AlertComponent } from './alert/alert.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MaterialModule,
     MainLayoutModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { AlertService } from './alert.service';
-import { AlertsMessage } from './alert';
+import { AlertMessageService } from './alert-message.service';
+import { AlertsMessage } from './alert-message';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -20,14 +20,14 @@ export class HomeComponent implements OnInit {
   alerts: AlertsMessage[];
   pageIndex = 0;
   pageSize = 10;
-  pageSizeOptions = [2,4,5,10];
+  pageSizeOptions = [5,10];
 
   displayedColumns: string[] = ['Ponto de Venda', 'Tipo', 'Produto', 'Margem', 'Descrição', 'Categoria'];
   dataSource: any;  
 
-  constructor(private alertService: AlertService ) { 
-    this.alertService.getAlertsTotalizers().subscribe(count => {       
-      this.alertService.getAlerts(this.produto, this.pdv, this.pageIndex, count).subscribe(result => {
+  constructor(private alertMessageService: AlertMessageService ) { 
+    this.alertMessageService.getAlertsTotalizers().subscribe(count => {       
+      this.alertMessageService.getAlerts(this.produto, this.pdv, this.pageIndex, count).subscribe(result => {
         this.dataSource = new MatTableDataSource<AlertsMessage>(result);
         this.dataSource.paginator = this.paginator;
       }); 
@@ -35,7 +35,7 @@ export class HomeComponent implements OnInit {
   }
   
   loadData(produto, pdv, pageIndex, pageSize) {    
-      this.alertService.getAlerts(produto, pdv, pageIndex, pageSize).subscribe(result => { 
+      this.alertMessageService.getAlerts(produto, pdv, pageIndex, pageSize).subscribe(result => { 
         this.dataSource = new MatTableDataSource<AlertsMessage>(result);    
     });    
   }
