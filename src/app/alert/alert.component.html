@@ -15,7 +15,7 @@
         <mat-checkbox [(ngModel)]="alert.compararValor" >Comparar preço estipulado e participação</mat-checkbox>
       
         <mat-form-field>
-            <input matInput placeholder="Tipo Evento" [(ngModel)]="alert.evento.tipo">
+            <input matInput type="number" placeholder="Tipo Evento" [(ngModel)]="alert.evento.tipo">
             <mat-hint align="start">ID do evento, por exemplo: 1</mat-hint>
           </mat-form-field>
       
@@ -26,7 +26,33 @@
 
         <button mat-flat-button color="primary" (click)="salvar()">Salvar</button>    
   </div>
-
-
-
 </mat-card>
+ 
+<div class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    
+    <ng-container matColumnDef="Comparar Valor">
+      <th mat-header-cell *matHeaderCellDef> Comparar Valor </th>
+      <td mat-cell *matCellDef="let element"> {{element.compararValor}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="Alerta">
+        <th mat-header-cell *matHeaderCellDef> Alerta </th>
+        <td mat-cell *matCellDef="let element"> {{element.alerta}} </td>
+     </ng-container>
+
+     <ng-container matColumnDef="Tipo">
+        <th mat-header-cell *matHeaderCellDef> Tipo </th>
+        <td mat-cell *matCellDef="let element"> {{element.evento.tipo}} </td>
+     </ng-container>
+
+     <ng-container matColumnDef="Descrição">
+        <th mat-header-cell *matHeaderCellDef> Descrição </th>
+        <td mat-cell *matCellDef="let element"> {{element.evento.descricao}} </td>
+     </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+</div>
