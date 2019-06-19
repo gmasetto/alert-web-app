@@ -1,24 +1,17 @@
 
 <mat-toolbar-row color="second">        
-    <mat-form-field class="fill-space">
-        <mat-select placeholder="Produtos">
-            <mat-option *ngFor="let food of foods" [value]="food.value">
-            {{food.viewValue}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    <mat-form-field class="fill-space">
-            <mat-select placeholder="Categoria">
-                <mat-option *ngFor="let food of foods" [value]="food.value">
-                {{food.viewValue}}
-                </mat-option>
-            </mat-select>
-    </mat-form-field>
-    <button mat-flat-button color="primary">Filter</button>
+  <mat-form-field class="fill-space">
+    <input matInput placeholder="Produto" [(ngModel)]="produto">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <mat-form-field class="fill-space">   
+    <input matInput placeholder="Ponto de Venda" [(ngModel)]="pdv">
+    <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+  </mat-form-field>
+  <button mat-flat-button color="primary" (click)="filter()">Filter</button>
 </mat-toolbar-row>
 <div class="mat-elevation-z8">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
         <ng-container matColumnDef="Ponto de Venda">
           <th mat-header-cell *matHeaderCellDef> Ponto de Venda </th>
           <td mat-cell *matCellDef="let element"> {{element.pontoDeVenda}} </td>

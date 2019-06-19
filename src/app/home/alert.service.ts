@@ -13,8 +13,21 @@ export class AlertService {
   constructor(private _http: HttpClient) {
    }
   
-  getAlerts(page, size) {
-    let url = this.url + "?page=" + page + "&size=" + size;
+  getAlerts(produto, pdv, page, size) {
+    let url = this.url + "?page=" + page + "&size=" + size ;
+
+    if (produto) {
+        url = url + "&produto=" + produto;
+        console.log(url);
+    } 
+
+    if (pdv) {
+        url = url + "&pdv=" + pdv;
+        console.log(url);
+    }
+
+    console.log("&&&&&");
+    console.log(url);
 
     return this._http.get<AlertsMessage[]>(url);
   }
