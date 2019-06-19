@@ -21,10 +21,7 @@ export class AlertComponent implements OnInit {
   alert: Alert;
   
   constructor(private alertService: AlertService, private toastr: ToastrService) { 
-      this.alertService.getTypesAlerts().subscribe(result => { 
-          this.dataSource = new MatTableDataSource<Alert>(result);
-          this.dataSource.paginator = this.paginator;
-      });
+      this.loadData();
   }
 
   ngOnInit() {        
@@ -32,9 +29,17 @@ export class AlertComponent implements OnInit {
     this.alert = new Alert();    
   }
 
+  loadData() {
+    this.alertService.getTypesAlerts().subscribe(result => { 
+      this.dataSource = new MatTableDataSource<Alert>(result);
+      this.dataSource.paginator = this.paginator;
+  });
+  }
+
   salvar() {
       this.alertService.saveAlert(this.alert).subscribe(res => {       
         this.toastr.success("Alerta criado com sucesso!");
+        this.loadData();
       }, err => {
         this.toastr.error("Erro ao salvar alerta!");
       }
