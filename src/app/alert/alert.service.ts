@@ -21,4 +21,8 @@ export class AlertService {
     return this._http.get<Alert[]>(this.urlTiposAlertas);
   }
 
+  removerTypeAlert(alert: Alert){            
+    return this._http.delete<Alert>(this.url + "?alerta=" + alert.alerta);
+  }
+
 }

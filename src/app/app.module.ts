@@ -10,6 +10,7 @@ import { MaterialModule } from './utils/material.module';
 import { FormsModule } from '@angular/forms';
 import { AlertComponent } from './alert/alert.component';
 import { ToastrModule } from 'ngx-toastr';
+import { MatIconModule } from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ToastrModule } from 'ngx-toastr';
     MaterialModule,
     MainLayoutModule,
     FormsModule,
+    MatIconModule,
     ToastrModule.forRoot()
   ],
   providers: [],

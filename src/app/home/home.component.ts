@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
   loadData(produto, pdv, pageIndex, pageSize) {    
       this.alertMessageService.getAlerts(produto, pdv, pageIndex, pageSize).subscribe(result => { 
         this.dataSource = new MatTableDataSource<AlertsMessage>(result);    
-    });    
+      });    
   }
 
   filter() {

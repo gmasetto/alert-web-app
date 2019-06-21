@@ -15,7 +15,7 @@ export class AlertComponent implements OnInit {
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
     
-  displayedColumns: string[] = ['Alerta', 'Comparar Valor', 'Tipo', 'Descrição'];
+  displayedColumns: string[] = ['Alerta', 'Comparar Valor', 'Tipo', 'Descrição', 'Action'];
   dataSource: any;  
   
   alert: Alert;
@@ -36,8 +36,17 @@ export class AlertComponent implements OnInit {
   });
   }
 
-  salvar() {
-      this.alertService.saveAlert(this.alert).subscribe(res => {       
+  removerTypeAlert(alert: Alert) {
+    this.alertService.removerTypeAlert(alert).subscribe((result: any)=> {      
+      this.loadData();
+      this.toastr.success("Alerta removido com sucesso!");
+    }, err => {
+      this.toastr.error("Erro ao remover alerta!");
+    });
+  }
+
+  save() {
+      this.alertService.saveAlert(this.alert).subscribe(result => {       
         this.toastr.success("Alerta criado com sucesso!");
         this.loadData();
       }, err => {
